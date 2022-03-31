@@ -4,7 +4,7 @@
 #include "exploration_function.h"
 
 template <class Key>
-class feLineal : public FuncionExploracion<Key> {
+class feLineal : public ExplorationFunction<Key> {
  public:
   unsigned operator()(const Key& k, unsigned i) const { return i; }
 };

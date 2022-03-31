@@ -2,7 +2,7 @@
 #define _EXPLORATION_FUNCTION_
 
 template <class Key>
-class FuncionExploracion {
+class ExplorationFunction {
  public:
   virtual unsigned operator()(const Key& k, unsigned i) const = 0;
 };

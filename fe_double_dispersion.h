@@ -5,7 +5,7 @@
 #include "exploration_function.h"
 
 template <class Key>
-class feDoubleDispersion : public FuncionExploracion<Key> {
+class feDoubleDispersion : public ExplorationFunction<Key> {
  public:
   feDoubleDispersion(const DispersionFunction<Key>& fd) : fd_(fd) {}
   unsigned operator()(const Key& k, unsigned i) const { return i * fd_(k); }
