@@ -6,7 +6,9 @@
 template <class Key>
 class feLineal : public ExplorationFunction<Key> {
  public:
+  // Constructores
   feLineal() {};
+  // Sobrecarga del operador ()
   unsigned operator()(const Key& k, unsigned i) const { return i; }
 };
 

@@ -8,10 +8,12 @@
 template <class Key>
 class Block : public Sequence<Key> {
  public:
+  // Constructores
   Block() {};
   Block(const int& block_size) : block_size_(block_size) {
     data_.reserve(block_size);
   }
+  // Métodos virtuales
   bool Search(const Key& k) const {
     for (size_t i = 0; i < data_.size(); ++i) {
       if (data_[i] == k) return true;
@@ -30,8 +32,8 @@ class Block : public Sequence<Key> {
   bool IsFull() const { return data_.size() >= block_size_; }
 
  private:
-  std::vector<Key> data_;
-  size_t block_size_;
+  std::vector<Key> data_; // Contenedor de keys
+  size_t block_size_; // Tamaño del contenedor
 };
 
 #endif  // _BLOCK_H_

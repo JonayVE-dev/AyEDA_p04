@@ -8,7 +8,9 @@
 template <class Key>
 class feRedispersion : public ExplorationFunction<Key> {
  public:
+  // Constructores
   feRedispersion() {};
+  // Sobrecarga del operador ()
   unsigned operator()(const Key& k, unsigned i) const {
     srand(k);
     int random{0};

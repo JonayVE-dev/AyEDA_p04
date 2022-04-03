@@ -7,26 +7,29 @@
 #include "fe_quadratic.h"
 #include "fe_double_dispersion.h"
 #include "fe_redispersion.h"
+#include "string"
 
+typedef long key;
 int main() {
-
+  // Tamaño de la tabla
   size_t table_size{0};
   std::cout << "Introduzca el tamaño de la tabla: ";
   std::cin >> table_size;
   
+  // Selección de la función de dispersión
   char fd_option;
-  DispersionFunction<long>* fd;
+  DispersionFunction<key>* fd;
   std::cout << "Introduzca la función de dispersión a utilizar, M(Module), R(Pseudorandom), S(Sum): ";
   std::cin >> fd_option;
   switch (fd_option) {
     case 'M':
-      fd = new fdModule<long>(table_size);
+      fd = new fdModule<key>(table_size);
       break;
     case 'R':
-      fd = new fdPseudoRandom<long>(table_size);
+      fd = new fdPseudoRandom<key>(table_size);
       break;
     case 'S':
-      fd = new fdSum<long>(table_size);
+      fd = new fdSum<key>(table_size);
       break;
     default:
       std::cerr << "Función de dispersión no valida" << std::endl;
@@ -34,9 +37,10 @@ int main() {
       break;
   }
   
+  // Técnica de dispersión utilizada, tamaño de bloque y función de exploración
   char disper_option, fe_option;
   size_t block_size = 0;
-  ExplorationFunction<long>* fe = nullptr;
+  ExplorationFunction<key>* fe = nullptr;
   std::cout << "Introduzca la técnica de dispersión a utilizar, A(Abierta), C(Cerrada): ";
   std::cin >> disper_option;
   if(disper_option == 'C') {
@@ -47,16 +51,16 @@ int main() {
     std::cin >> fe_option;
     switch (fe_option) {
     case 'L':
-      fe = new feLineal<long>;
+      fe = new feLineal<key>;
       break;
     case 'C':
-      fe = new feQuadratic<long>;
+      fe = new feQuadratic<key>;
       break;
     case 'D':
-      fe = new feDoubleDispersion<long>(*fd);
+      fe = new feDoubleDispersion<key>(*fd);
       break;
     case 'R':
-      fe = new feRedispersion<long>;
+      fe = new feRedispersion<key>;
       break;
     default:
       std::cerr << "Función de dispersión no valida" << std::endl;
@@ -64,8 +68,11 @@ int main() {
       break;
     }
   }
-  HashTable<long> table(table_size, fd, fe, block_size);
+  
+  // Creación de la hash_table
+  HashTable<key> table(table_size, fd, fe, block_size);
 
+  // Menú de la hash_table
   while (true) {
     std::cout << "¿Qué operación desea realizar?" << std::endl;
     std::cout << "1. Buscar" << std::endl;
@@ -73,7 +80,7 @@ int main() {
     std::cout << "0. Salir" << std::endl;
     int option;
     std::cin >> option;
-    long key;
+    key key_;
     switch (option) {
       case 0:
         std::cout << "FIN DEL PROGRAMA" << std::endl;
@@ -81,13 +88,13 @@ int main() {
         break;
       case 1:
         std::cout << "Introduzca la clave a buscar: ";
-        std::cin >> key;
-        std::cout << "La clave" << (table.Search(key) ? " se ha encontrado" : " no se ha encontrado") << std::endl;
+        std::cin >> key_;
+        std::cout << "La clave" << (table.Search(key_) ? " se ha encontrado" : " no se ha encontrado") << std::endl;
         break;
       case 2:
         std::cout << "Introduzca la clave a insertar: ";
-        std::cin >> key;
-        std::cout << "La clave" << (table.Insert(key) ? " se ha insertado" : " no se ha insertado") << std::endl;
+        std::cin >> key_;
+        std::cout << "La clave" << (table.Insert(key_) ? " se ha insertado" : " no se ha insertado") << std::endl;
       break;
       default:
         std::cout << "Opción no válida" << std::endl;

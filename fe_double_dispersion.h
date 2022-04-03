@@ -7,11 +7,13 @@
 template <class Key>
 class feDoubleDispersion : public ExplorationFunction<Key> {
  public:
+  // Constructores
   feDoubleDispersion(DispersionFunction<Key>& fd) : fd_(fd) {}
+  // Sobrecarga del operador ()
   unsigned operator()(const Key& k, unsigned i) const { return i * fd_(k); }
 
  private:
-  DispersionFunction<Key>& fd_;
+  DispersionFunction<Key>& fd_; // Función de dispersión
 };
 
 #endif  // _FE_DOUBLE_DISPERSION_

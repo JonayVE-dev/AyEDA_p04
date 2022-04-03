@@ -12,6 +12,7 @@
 template <class Key>
 class HashTable {
  public:
+  // Constructores
   HashTable(size_t table_size, DispersionFunction<Key>* fd,
             ExplorationFunction<Key>* fe, size_t block_size)
       : table_size_(table_size), fd_(fd), fe_(fe), block_size_(block_size) {
@@ -27,6 +28,7 @@ class HashTable {
     }
   };
 
+  // Destructor
   ~HashTable() {
     for (size_t i = 0; i < table_size_; ++i) {
       delete table_[i];
@@ -34,6 +36,7 @@ class HashTable {
     delete table_;
   }
 
+  // Métodos para buscar una Key en la HashTable
   bool Search(const Key& k) const {
     unsigned table_pos = (*fd_)(k);
     if (fe_ != nullptr) {
@@ -51,6 +54,7 @@ class HashTable {
     return false;
   }
 
+  // Métodos para insertar una Key en la HashTable
   bool Insert(const Key& k) {
     unsigned table_pos = (*fd_)(k);
     if (fe_ != nullptr) {
@@ -75,11 +79,11 @@ class HashTable {
   }
 
  private:
-  size_t table_size_;
-  DispersionFunction<Key>* fd_;
-  ExplorationFunction<Key>* fe_ = nullptr;
-  size_t block_size_ = 0;
-  Sequence<Key>** table_;
+  size_t table_size_; // Tamaño de la tabla
+  DispersionFunction<Key>* fd_; // Función de dispersión
+  ExplorationFunction<Key>* fe_ = nullptr;  // Función de exploración
+  size_t block_size_ = 0; // Tamaño de bloque
+  Sequence<Key>** table_; // Contenedor de la hastble
 };
 
 #endif  // _HASH_TABLE_H

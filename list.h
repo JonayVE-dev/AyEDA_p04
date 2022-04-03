@@ -8,7 +8,10 @@
 template <class Key>
 class List : public Sequence<Key> {
  public:
+  // Constructores
   List() {};
+
+  // Métodos virtuales
   bool Search(const Key& k) const{
     for (size_t i = 0; i < data_.size(); ++i) {
       if (data_[i] == k) return true;
@@ -27,7 +30,7 @@ class List : public Sequence<Key> {
   bool IsFull() const { return false; }
 
  private:
-  std::vector<Key> data_;
+  std::vector<Key> data_; // Contenedor de keys
 };
 
 #endif  // _LIST_H_

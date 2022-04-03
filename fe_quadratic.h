@@ -6,7 +6,9 @@
 template <class Key>
 class feQuadratic : public ExplorationFunction<Key> {
  public:
+  // Constructores
   feQuadratic() {};
+  // Sobrecarga del operador ()
   unsigned operator()(const Key& k, unsigned i) const { return i * i; }
 };
 
