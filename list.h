@@ -29,6 +29,10 @@ class List : public Sequence<Key> {
 
   bool IsFull() const { return false; }
 
+  void Print() {
+    for(auto const& k : data_) std::cout << k << ' ';
+  }
+
  private:
   std::vector<Key> data_; // Contenedor de keys
 };

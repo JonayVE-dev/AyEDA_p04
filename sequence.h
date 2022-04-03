@@ -11,6 +11,7 @@ class Sequence {
   virtual bool Search(const Key& k) const = 0;
   virtual bool Insert(const Key& k) = 0;
   virtual bool IsFull() const = 0;
+  virtual void Print() = 0;
 };
 
 #endif  // _SEQUENCE_H_

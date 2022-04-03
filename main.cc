@@ -84,6 +84,7 @@ int main() {
     switch (option) {
       case 0:
         std::cout << "FIN DEL PROGRAMA" << std::endl;
+        // table.PrintTable();
         return 0;
         break;
       case 1:

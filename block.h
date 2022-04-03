@@ -31,6 +31,10 @@ class Block : public Sequence<Key> {
 
   bool IsFull() const { return data_.size() >= block_size_; }
 
+  void Print() {
+    for(auto const& k : data_) std::cout << k << ' ';
+  }
+
  private:
   std::vector<Key> data_; // Contenedor de keys
   size_t block_size_; // Tamaño del contenedor

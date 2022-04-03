@@ -75,9 +75,15 @@ class HashTable {
     if (table_[table_pos]->Search(k)) return false;
     table_[table_pos]->Insert(k);
     return true;
-
   }
 
+  void PrintTable() {
+    for (size_t i = 0; i < table_size_; i++) {
+        std::cout << "Bloque " << i << std::endl;
+        table_[i]->Print();
+        std::cout << std::endl;
+    }
+  }
  private:
   size_t table_size_; // Tamaño de la tabla
   DispersionFunction<Key>* fd_; // Función de dispersión
