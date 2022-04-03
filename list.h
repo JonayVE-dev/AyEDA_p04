@@ -1,7 +1,7 @@
 #ifndef _LIST_H_
 #define _LIST_H_
 
-#include <list>
+#include <vector>
 
 #include "sequence.h"
 
@@ -9,9 +9,9 @@ template <class Key>
 class List : public Sequence<Key> {
  public:
   List() {};
-  bool Search(const Key& k) {
-    for (int i = 0; i < data_.size(); ++i) {
-      if (data_.at(i) == k) return true;
+  bool Search(const Key& k) const{
+    for (size_t i = 0; i < data_.size(); ++i) {
+      if (data_[i] == k) return true;
     }
     return false;
   }
@@ -27,7 +27,7 @@ class List : public Sequence<Key> {
   bool IsFull() const { return false; }
 
  private:
-  std::list<Key> data_;
+  std::vector<Key> data_;
 };
 
 #endif  // _LIST_H_

@@ -11,12 +11,12 @@
 int main() {
 
   size_t table_size{0};
-  std::cout << "Introduzca el tamaño de la tabla: " << std::endl;
+  std::cout << "Introduzca el tamaño de la tabla: ";
   std::cin >> table_size;
   
   char fd_option;
   DispersionFunction<long>* fd;
-  std::cout << "Introduzca la función de dispersión a utilizar, M(Module), R(Pseudorandom), S(Sum): " << std::endl;
+  std::cout << "Introduzca la función de dispersión a utilizar, M(Module), R(Pseudorandom), S(Sum): ";
   std::cin >> fd_option;
   switch (fd_option) {
     case 'M':
@@ -37,7 +37,7 @@ int main() {
   char disper_option, fe_option;
   size_t block_size = 0;
   ExplorationFunction<long>* fe = nullptr;
-  std::cout << "Introduzca la técnica de dispersión a utilizar, A(Abierta), C(Cerrada): " << std::endl;
+  std::cout << "Introduzca la técnica de dispersión a utilizar, A(Abierta), C(Cerrada): ";
   std::cin >> disper_option;
   if(disper_option == 'C') {
     std::cout << "Introduzca el tamaño del bloque: ";
@@ -45,7 +45,7 @@ int main() {
     
     std::cout << "Introduzca la función de exploración a utilizar, L(Lineal), C(Cuadrática), D(DobleDispersión), R(Redispersión): ";
     std::cin >> fe_option;
-    switch (fd_option) {
+    switch (fe_option) {
     case 'L':
       fe = new feLineal<long>;
       break;
@@ -77,21 +77,23 @@ int main() {
     switch (option) {
       case 0:
         std::cout << "FIN DEL PROGRAMA" << std::endl;
+        return 0;
         break;
       case 1:
         std::cout << "Introduzca la clave a buscar: ";
         std::cin >> key;
-        std::cout << "La clave " << (table.Search(key) ? " se ha encontrado" : " no se ha encontrado") << std::endl;
+        std::cout << "La clave" << (table.Search(key) ? " se ha encontrado" : " no se ha encontrado") << std::endl;
         break;
       case 2:
         std::cout << "Introduzca la clave a insertar: ";
         std::cin >> key;
-        std::cout << "La clave " << (table.Insert(key) ? " se ha insertado" : " no se ha insertado") << std::endl;
+        std::cout << "La clave" << (table.Insert(key) ? " se ha insertado" : " no se ha insertado") << std::endl;
       break;
       default:
         std::cout << "Opción no válida" << std::endl;
       break;
     }
+    std::cout << std::endl;
   }
   return 0;
 }

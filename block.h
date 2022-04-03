@@ -13,7 +13,7 @@ class Block : public Sequence<Key> {
     data_.reserve(block_size);
   }
   bool Search(const Key& k) const {
-    for (int i = 0; i < data_.size(); ++i) {
+    for (size_t i = 0; i < data_.size(); ++i) {
       if (data_[i] == k) return true;
     }
     return false;
