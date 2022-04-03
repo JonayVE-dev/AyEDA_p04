@@ -7,7 +7,7 @@
 template <class Key>
 class feDoubleDispersion : public ExplorationFunction<Key> {
  public:
-  feDoubleDispersion(const DispersionFunction<Key>& fd) : fd_(fd) {}
+  feDoubleDispersion(DispersionFunction<Key>& fd) : fd_(fd) {}
   unsigned operator()(const Key& k, unsigned i) const { return i * fd_(k); }
 
  private:

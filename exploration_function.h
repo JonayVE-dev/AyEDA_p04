@@ -4,6 +4,7 @@
 template <class Key>
 class ExplorationFunction {
  public:
+  ExplorationFunction() {};
   virtual unsigned operator()(const Key& k, unsigned i) const = 0;
 };
 

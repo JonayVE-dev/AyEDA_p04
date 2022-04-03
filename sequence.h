@@ -4,9 +4,11 @@
 template <class Key>
 class Sequence {
  public:
-  virtual bool search(const Key& k) const = 0;
-  virtual bool insert(const Key& k) = 0;
-  virtual bool isFull() const = 0;
+  Sequence() {};
+  virtual ~Sequence() {}
+  virtual bool Search(const Key& k) const = 0;
+  virtual bool Insert(const Key& k) = 0;
+  virtual bool IsFull() const = 0;
 };
 
 #endif  // _SEQUENCE_H_

@@ -8,22 +8,23 @@
 template <class Key>
 class List : public Sequence<Key> {
  public:
-  bool search(const Key& k) {
+  List() {};
+  bool Search(const Key& k) {
     for (int i = 0; i < data_.size(); ++i) {
-      if (data_[i] == k) return true;
+      if (data_.at(i) == k) return true;
     }
     return false;
   }
 
-  bool insert(const Key& k) {
-    if (!search(k)) {
+  bool Insert(const Key& k) {
+    if (!Search(k)) {
       data_.push_back(k);
       return true;
     }
     return false;
   }
 
-  bool isFull() const { return false; }
+  bool IsFull() const { return false; }
 
  private:
   std::list<Key> data_;

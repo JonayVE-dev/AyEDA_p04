@@ -8,10 +8,11 @@
 template <class Key>
 class feRedispersion : public ExplorationFunction<Key> {
  public:
+  feRedispersion() {};
   unsigned operator()(const Key& k, unsigned i) const {
     srand(k);
     int random{0};
-    for (int j = 0; j < i ; ++j) {
+    for (unsigned j = 0; j < i ; ++j) {
       random = rand();
     }
     return random;

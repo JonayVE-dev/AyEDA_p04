@@ -4,6 +4,7 @@
 template <class Key>
 class DispersionFunction {
  public:
+  DispersionFunction() {};
   virtual unsigned operator()(const Key& k) const = 0;
 };
 
